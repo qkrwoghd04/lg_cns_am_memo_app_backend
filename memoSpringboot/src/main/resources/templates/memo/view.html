@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${memo.title}">메모 상세</title>
+</head>
+<body>
+    <h1 th:text="${memo.title}"></h1>
+    
+    <div>
+        <strong>ID:</strong> <span th:text="${memo.id}"></span>
+    </div>
+    <div>
+        <strong>생성일:</strong> <span th:text="${memo.createdDate}"></span>
+    </div>
+    
+    <div>
+        <h2>내용</h2>
+        <p th:text="${memo.content}"></p>
+    </div>
+    
+    <div>
+        <a th:href="@{/memos/{id}/edit(id=${memo.id})}">수정</a>
+        <a th:href="@{/memos/{id}/delete(id=${memo.id})}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
+        <a href="/memos">목록으로</a>
+    </div>
+</body>
+</html>

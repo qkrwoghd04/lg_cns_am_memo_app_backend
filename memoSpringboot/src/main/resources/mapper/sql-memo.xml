@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.memo.mapper.MemoMapper">
+    <insert id="insertMemo" parameterType="com.memo.dto.Memo">
+        INSERT INTO memos (id, title, content)
+        VALUES (#{id}, #{title}, #{content})
+    </insert>
+
+    <select id="selectAllMemos" resultType="com.memo.dto.Memo">
+        SELECT * FROM memos 
+        ORDER BY created_date DESC
+    </select>
+
+    <select id="selectMemoById" parameterType="int" resultType="com.memo.dto.Memo">
+        SELECT * FROM memos 
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateMemo" parameterType="com.memo.dto.Memo">
+        UPDATE memos 
+        SET title = #{title}, 
+            content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteMemo" parameterType="int">
+        DELETE FROM memos 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="getNextId" resultType="int">
+        SELECT COALESCE(MAX(id), 0) + 1 FROM memos
+    </select>
+</mapper>

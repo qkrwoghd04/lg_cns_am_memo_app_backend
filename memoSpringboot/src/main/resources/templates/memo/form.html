@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${memo.id == 0 ? '새 메모 작성' : '메모 수정'}"></title>
+</head>
+<body>
+    <h1 th:text="${memo.id == 0 ? '새 메모 작성' : '메모 수정'}"></h1>
+    
+    <form th:action="${memo.id == 0 ? '/memos/new' : '/memos/' + memo.id + '/edit'}" method="post">
+        <div>
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" th:value="${memo.title}" required>
+        </div>
+        <div>
+            <label for="content">내용</label>
+            <textarea id="content" name="content" rows="10" required th:text="${memo.content}"></textarea>
+        </div>
+        <button type="submit" th:text="${memo.id == 0 ? '작성' : '수정'}">저장</button>
+        <a href="/memos">취소</a>
+    </form>
+</body>
+</html>
