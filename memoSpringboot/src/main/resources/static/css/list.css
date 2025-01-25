@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+/*  Default Style */
+body {
+	margin: 0;
+	padding: 0;
+	background-color: rgb(37, 37, 37);
+	color: white; 
+	font-family: Pretendard-Regular;
+}
+h1{
+	font-size: 4rem;
+	font-weight: 300;
+}
+h2 {
+	font-size: 3.5rem;
+}
+h3 {
+	font-size: 3rem;
+}
+h4,h5,h6,a {
+	font-size: 2rem;
+}
+th, td {
+	padding: 20px;
+	text-align: left;
+	font-size: 2.5rem;
+	border-bottom: 1px solid #ddd;
+	tr:hover {background-color: coral;}
+}
+button {
+	font-size: 3rem;
+	border: none;
+	padding: 20px;
+	width: 100px;
+    height: 100px;
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.10);
+}
+
+/* 헤더 */
+.list-header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 20px;
+}
+
+.list-header-container .search-button {
+	background-color: rgb(69,69,69);
+	border-radius: 20px;
+}
+
+/* Memo 바디 */
+.list-body-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.list-memo-container {
+	display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.memo-box-container{
+	position: relative;
+     width: 100%;
+     overflow: hidden;
+}
+.memo-content-container{
+     position: relative;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     transition: transform 0.3s ease;
+ }
+.memo-content {
+     width: 100%;
+     background-color: #f4f4f4;
+     color: black;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     display: flex;
+     gap: 10px;
+     justify-content: space-between;
+ }
+ 
+ .delete-overlay {
+     position: absolute;
+     top: 0;
+     right: -100px;
+     width: 100px;
+     height: 100%;
+     background-color: red;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     transition: right 0.3s ease;
+ }
+ .delete-overlay i {
+     color: white;
+     font-size: 2rem;
+ }
+/*  Footer */
+.new-button {
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    border-radius: 50%; 
+    background-color: black;
+    color: white; 
+}

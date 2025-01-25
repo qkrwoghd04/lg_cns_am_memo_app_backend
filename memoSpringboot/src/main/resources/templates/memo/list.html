@@ -1,32 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	 <link rel="stylesheet" th:href="@{/css/list.css}" />
     <title>메모 목록</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1>메모 목록</h1>
-    <a href="/memos/new">새 메모 작성</a>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>제목</th>
-                <th>생성일</th>
-                <th>액션</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="memo : ${memos}">
-                <td th:text="${memo.id}"></td>
-                <td><a th:href="@{/memos/{id}(id=${memo.id})}" th:text="${memo.title}"></a></td>
-                <td th:text="${memo.createdDate}"></td>
-                <td>
-                    <a th:href="@{/memos/{id}/edit(id=${memo.id})}">수정</a>
-                    <a th:href="@{/memos/{id}/delete(id=${memo.id})}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="list-container">
+		<header class="list-header-container">
+			<h1>Memos</h1>
+			<button class="search-button"  onclick="console.log('Button clicked!')">🔍</button>
+		</header>
+		<div class="list-body-container">
+			 <div class="list-memo-container">
+	            <!-- Thymeleaf를 이용해 데이터를 동적으로 렌더링 -->
+	            <div th:each="memo : ${memos}" class="memo-box-container" th:data-id="${memo.id}" >
+	                <div class="memo-content-container">
+	                	<div class="memo-content" onclick="redirectToViewPage(this)">
+		                    <h3 th:text="${memo.title}"></h3>
+		                    <h4 th:text="${memo.createdDate}"></h4>	                	
+	                	</div>
+	                	<div class="delete-overlay" onclick="deleteMemo(this)">
+	                		<i class="fas fa-trash-alt"></i>
+	                	</div>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+	    <button class="new-button" onclick="window.location.href='/memos/new'">+</button>
+	</div>
+	<script>
+	let startX, isDragging = false, currentMemoBox = null;
+
+	document.addEventListener('DOMContentLoaded', () => {
+	    document.querySelectorAll('.memo-content-container').forEach(memoBox => {
+	        memoBox.addEventListener('touchstart', touchStart, { passive: false });
+	        memoBox.addEventListener('touchmove', touchMove, { passive: false });
+	        memoBox.addEventListener('touchend', touchEnd, { passive: false });
+	        memoBox.addEventListener('mousedown', mouseStart);
+	        memoBox.addEventListener('mousemove', mouseMove);
+	        memoBox.addEventListener('mouseup', mouseEnd);
+	        memoBox.addEventListener('mouseleave', mouseEnd);
+	    });
+	});
+
+	function touchStart(e) {
+	    startX = e.touches[0].clientX;
+	    isDragging = false;
+	    currentMemoBox = e.currentTarget;
+	}
+
+	function touchMove(e) {
+		   if (!currentMemoBox) return;
+		   
+		   const currentX = e.touches[0].clientX;
+		   const diffX = startX - currentX;  // 다시 원래대로 (왼쪽에서 오른쪽으로)
+		   
+		   if (diffX > 10) {  // 왼쪽에서 오른쪽으로 스와이프
+		       isDragging = true;
+		       const deleteOverlay = currentMemoBox.querySelector('.delete-overlay');
+		       
+		       currentMemoBox.style.transform = `translateX(-100px)`;
+		       deleteOverlay.style.right = '0';
+		       e.preventDefault();
+		   }
+		}
+
+	function touchEnd(e) {
+	    if (isDragging && currentMemoBox) {
+	        const memoId = currentMemoBox.closest('.memo-box-container').dataset.id;
+	        
+	        if (confirm('정말 삭제하시겠습니까?')) {
+	            window.location.href = `/memos/${memoId}/delete`;
+	        } else {
+	            resetPosition(currentMemoBox);
+	        }
+	    } else if (!isDragging && currentMemoBox) {
+	        redirectToViewPage(currentMemoBox.querySelector('.memo-content'));
+	    }
+	    
+	    currentMemoBox = null;
+	}
+
+	function resetPosition(memoBox) {
+	    const deleteOverlay = memoBox.querySelector('.delete-overlay');
+	    memoBox.style.transform = 'translateX(0)';
+	    deleteOverlay.style.right = '-100px';
+	}
+
+	function redirectToViewPage(element) {
+	    const memoId = element.closest('.memo-box-container').dataset.id;
+	    window.location.href = `/memos/${memoId}`;
+	}
+	
+	document.addEventListener('touchmove', function(e) {
+	    e.preventDefault();
+	}, { passive: false });
+	</script>
 </body>
 </html>
