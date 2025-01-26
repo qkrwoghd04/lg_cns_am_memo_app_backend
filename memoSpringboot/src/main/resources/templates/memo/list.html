@@ -33,54 +33,54 @@
 	let startX, isDragging = false, currentMemoBox = null;
 
 	document.addEventListener('DOMContentLoaded', () => {
-	    document.querySelectorAll('.memo-content-container').forEach(memoBox => {
-	        memoBox.addEventListener('touchstart', touchStart, { passive: false });
-	        memoBox.addEventListener('touchmove', touchMove, { passive: false });
-	        memoBox.addEventListener('touchend', touchEnd, { passive: false });
-	        memoBox.addEventListener('mousedown', mouseStart);
-	        memoBox.addEventListener('mousemove', mouseMove);
-	        memoBox.addEventListener('mouseup', mouseEnd);
-	        memoBox.addEventListener('mouseleave', mouseEnd);
-	    });
-	});
-
-	function touchStart(e) {
-	    startX = e.touches[0].clientX;
-	    isDragging = false;
-	    currentMemoBox = e.currentTarget;
-	}
-
-	function touchMove(e) {
-		   if (!currentMemoBox) return;
-		   
-		   const currentX = e.touches[0].clientX;
-		   const diffX = startX - currentX;  // 다시 원래대로 (왼쪽에서 오른쪽으로)
-		   
-		   if (diffX > 10) {  // 왼쪽에서 오른쪽으로 스와이프
-		       isDragging = true;
-		       const deleteOverlay = currentMemoBox.querySelector('.delete-overlay');
-		       
-		       currentMemoBox.style.transform = `translateX(-100px)`;
-		       deleteOverlay.style.right = '0';
-		       e.preventDefault();
-		   }
-		}
-
-	function touchEnd(e) {
-	    if (isDragging && currentMemoBox) {
-	        const memoId = currentMemoBox.closest('.memo-box-container').dataset.id;
-	        
-	        if (confirm('정말 삭제하시겠습니까?')) {
-	            window.location.href = `/memos/${memoId}/delete`;
-	        } else {
-	            resetPosition(currentMemoBox);
-	        }
-	    } else if (!isDragging && currentMemoBox) {
-	        redirectToViewPage(currentMemoBox.querySelector('.memo-content'));
-	    }
+	    const listMemoContainer = document.querySelector('.list-memo-container');
 	    
-	    currentMemoBox = null;
-	}
+	    listMemoContainer.addEventListener('touchstart', (e) => {
+	        const memoContainer = e.target.closest('.memo-content-container');
+	        if (!memoContainer) return;
+	        
+	        startX = e.touches[0].clientX;
+	        isDragging = false;
+	        currentMemoBox = memoContainer;
+	    }, { passive: false });
+
+	    listMemoContainer.addEventListener('touchmove', (e) => {
+	        if (!currentMemoBox) return;
+
+	        const currentX = e.touches[0].clientX;
+	        const diffX = startX - currentX;
+
+	        if (diffX > 10) {
+	            isDragging = true;
+	            const deleteOverlay = currentMemoBox.querySelector('.delete-overlay');
+
+	            currentMemoBox.style.transform = `translateX(-100px)`;
+	            deleteOverlay.style.right = '0';
+	            e.preventDefault();
+	        }
+	    }, { passive: false });
+
+	    listMemoContainer.addEventListener('touchend', (e) => {
+	        if (!currentMemoBox) return;
+
+	        if (isDragging) {
+	            const memoId = currentMemoBox.closest('.memo-box-container').dataset.id;
+
+	            if (confirm('정말 삭제하시겠습니까?')) {
+	                window.location.href = `/memos/${memoId}/delete`;
+	            } else {
+	                resetPosition(currentMemoBox);
+	            }
+	        } else {
+	            const memoContent = currentMemoBox.querySelector('.memo-content');
+	            if (memoContent) {
+	                redirectToViewPage(memoContent);
+	            }
+	        }
+
+	        currentMemoBox = null;
+	    }, { passive: false });
+	});
 
 	function resetPosition(memoBox) {
 	    const deleteOverlay = memoBox.querySelector('.delete-overlay');
@@ -92,8 +92,8 @@
 	    const memoId = element.closest('.memo-box-container').dataset.id;
 	    window.location.href = `/memos/${memoId}`;
 	}
-	
-	document.addEventListener('touchmove', function(e) {
+
+	document.addEventListener('touchmove', (e) => {
 	    e.preventDefault();
 	}, { passive: false });
 	</script>
