@@ -2,14 +2,15 @@
 LG CNS AM CAMP에서 배운 Java Springboot 내용을 바탕으로 간단하게 메모 앱을 구현해봅니다. mybatis와 hikari를 통해 데이터를 관리합니다[Notion](https://boiling-capri-3b8.notion.site/build-mybatis-hikari-Springboot-185077591f228068901ffa078a84d332?pvs=4)
 
 # ERD (users, logos not started)
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/00ae8804-e4e5-4fea-8455-78b2410ffb47" />
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/4e5d0ed8-63cc-44fe-b03d-d0e0d1675582" />
+
 
 
 # Prototype with Figma
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/21494835-c1c7-4f00-a415-670e79e4c0ff" />
 
 # UI (in progress)
-<img width="155" alt="image" src="https://github.com/user-attachments/assets/27aa0e88-df72-4bd0-b53a-7dd8ff1120ca" />
+<img width="155" alt="image" src="https://github.com/user-attachments/assets/80acb9e8-9192-4240-861f-5d572351240b" />
 <img width="155" alt="image" src="https://github.com/user-attachments/assets/0a5fd3c2-9789-4679-9c1b-38308cb953bf" />
 <img width="155" alt="image" src="https://github.com/user-attachments/assets/9922aaa8-180e-462d-945d-3c08bfa5ed73" />
 <img width="155" alt="image" src="https://github.com/user-attachments/assets/cc4a8e0e-50a7-4d12-b99e-f240b2dc6ff9" />
