@@ -2,26 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${memo.title}">메모 상세</title>
+    <link rel="stylesheet" th:href="@{/css/view.css}"/>
+    <script src="https://kit.fontawesome.com/385cd447bf.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1 th:text="${memo.title}"></h1>
-    
+	<div class="view-container">
+		<header class="view-header-container">
+			<button onclick="goBackToHome()"><i class="fa-solid fa-angle-left"></i></button>
+			<h3 th:text="${memo.createdDate}"></h3>				
+			<button onclick="goToEdit()" th:data-id="${memo.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+		</header>
+		
+		<div class="view-body-container">
+			<div class="view-body-header">
+			    <h1 th:text="${memo.title}"></h1>
+			</div>
+		    <h2 th:text="${memo.content}"></h2>
+		</div>
+	</div>
     <div>
-        <strong>ID:</strong> <span th:text="${memo.id}"></span>
     </div>
-    <div>
-        <strong>생성일:</strong> <span th:text="${memo.createdDate}"></span>
-    </div>
-    
-    <div>
-        <h2>내용</h2>
-        <p th:text="${memo.content}"></p>
-    </div>
-    
-    <div>
-        <a th:href="@{/memos/{id}/edit(id=${memo.id})}">수정</a>
-        <a th:href="@{/memos/{id}/delete(id=${memo.id})}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
-        <a href="/memos">목록으로</a>
-    </div>
+    <script>
+	    function goBackToHome() {
+	        window.location.href = '/memos';
+	    }
+	    function goToEdit() {
+	    	const memoId = document.querySelector("button[data-id]").dataset.id;
+ 	    	window.location.href = `/memos/${memoId}/edit`;
+	    }
+    </script>
 </body>
 </html>

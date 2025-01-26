@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+/*  Default Style */
+body {
+	margin: 0;
+	padding: 0;
+	background-color: rgb(37, 37, 37);
+	color: white; 
+	font-family: Pretendard-Regular;
+	padding: 40px 20px;
+}
+h1{
+	font-size: 4rem;
+	font-weight: 700;
+}
+h2 {
+	font-size: 3.5rem;
+	font-weight: 100;
+}
+h3 {
+	font-size: 3rem;
+}
+h4,h5,h6,a {
+	font-size: 2rem;
+}
+button {
+	font-size: 3rem;
+	border: none;
+	padding: 20px;
+	width: 100px;
+    height: 100px;
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.10);
+}
+
+/* 헤더 */
+.view-header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.view-header-container  button{
+	border-radius: 15px;
+	background-color:  rgb(69,69,69);
+}
+.view-header-container button i {
+	color: white;
+}
+
+/* 바디 */
+.view-body-container {
+	flex: 1;
+}
+
+.view-body-header {
+	display: flex;
+	justify-content: space-between;
+	align-items : center;
+}
+
+

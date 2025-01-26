@@ -4,13 +4,16 @@
 	 <link rel="stylesheet" th:href="@{/css/list.css}" />
     <title>메모 목록</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/385cd447bf.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="list-container">
+	
 		<header class="list-header-container">
 			<h1>Memos</h1>
-			<button class="search-button"  onclick="console.log('Button clicked!')">🔍</button>
+			<button class="search-button"  onclick="console.log('Button clicked!')"><i class="fa-solid fa-magnifying-glass"></i></button>
 		</header>
+		
 		<div class="list-body-container">
 			 <div class="list-memo-container">
 	            <!-- Thymeleaf를 이용해 데이터를 동적으로 렌더링 -->
@@ -27,8 +30,10 @@
 	            </div>
 	        </div>
 		</div>
+		
 	    <button class="new-button" onclick="window.location.href='/memos/new'">+</button>
 	</div>
+	
 	<script>
 	let startX, isDragging = false, currentMemoBox = null;
 
