@@ -11,6 +11,7 @@ public interface MemoMapper {
 	List<Memo> selectAllMemos();
 	Memo selectMemoById(int id);
 	void updateMemo(Memo memo);
+	void updateMemoPriority(int id);
 	void deleteMemo(int id);
 	int getNextId();
 }

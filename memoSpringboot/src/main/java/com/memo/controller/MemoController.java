@@ -2,6 +2,7 @@ package com.memo.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,12 @@ public class MemoController {
 		memo.setId(id);
 		memoService.updateMemo(memo);
 		return "redirect:/memos";
+	}
+	
+	@PostMapping("/{id}/priority")
+	public ResponseEntity<Void> togglePriority(@PathVariable("id") int id) {
+	    memoService.updateMemoPriority(id);
+	    return ResponseEntity.ok().build();
 	}
 	
 	@GetMapping("{id}/delete")

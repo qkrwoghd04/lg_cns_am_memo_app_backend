@@ -30,7 +30,15 @@ public class MemoService {
     public void updateMemo(Memo memo) {
         memoMapper.updateMemo(memo);
     }
-
+    
+    public void updateMemoPriority(int id) {
+        try {
+            memoMapper.updateMemoPriority(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update memo priority");
+        }
+    }
+	
     public void deleteMemo(int id) {
         memoMapper.deleteMemo(id);
     }

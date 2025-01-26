@@ -8,4 +8,6 @@ public class Memo {
 	private String content;
 	private String title;
 	private String createdDate;
+	private String updatedDate;
+	private int priority;
 }

@@ -10,7 +10,7 @@
 
     <select id="selectAllMemos" resultType="com.memo.dto.Memo">
         SELECT * FROM memos 
-        ORDER BY created_date DESC
+        ORDER BY priority DESC, created_date DESC
     </select>
 
     <select id="selectMemoById" parameterType="int" resultType="com.memo.dto.Memo">
@@ -21,10 +21,18 @@
     <update id="updateMemo" parameterType="com.memo.dto.Memo">
         UPDATE memos 
         SET title = #{title}, 
-            content = #{content}
+            content = #{content},
+            updated_date= now() <!--  추가 -->
         WHERE id = #{id}
     </update>
-
+    
+  	<update id="updateMemoPriority" parameterType="int">
+	    UPDATE memos
+	    SET priority = CASE WHEN priority = 0 THEN 1 ELSE 0 END,
+	        updated_date = now()
+	    WHERE id = #{id};
+	</update>
+    
     <delete id="deleteMemo" parameterType="int">
         DELETE FROM memos 
         WHERE id = #{id}

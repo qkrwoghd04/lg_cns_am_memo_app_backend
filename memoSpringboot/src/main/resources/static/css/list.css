@@ -28,10 +28,8 @@ h4,h5,h6,a {
 button {
 	font-size: 3rem;
 	border: none;
-	padding: 20px;
 	width: 100px;
-    height: 100px;
-	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.10);
+	height: 100px;
 }
 
 /* 헤더 */
@@ -88,7 +86,28 @@ button {
      display: flex;
      gap: 10px;
      justify-content: space-between;
+     align-items: center;
  }
+ .memo-content-left {
+ 	flex: 1;
+ }
+ .memo-content-right {
+ 	display: flex;
+ 	flex-direction: column;
+ 	justify-content: space-between;
+ 	align-items: end;
+ }
+ .memo-content-right button {
+	background-color: #f4f4f4;
+ }
+ .memo-content-right i {
+ 	font-size: 50px;
+ 	color: gray;
+ 	cursor: pointer;
+ }
+ .priority-star {
+    color: #EFC900 !important;
+}
  
  .delete-overlay {
      position: absolute;
@@ -106,7 +125,7 @@ button {
      color: white;
      font-size: 2rem;
  }
-/*  Footer */
+/*  푸터 */
 .new-button {
     position: absolute;
     bottom: 40px;

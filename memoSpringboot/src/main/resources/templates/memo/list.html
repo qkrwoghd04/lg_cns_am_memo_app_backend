@@ -18,9 +18,16 @@
 	            <!-- Thymeleaf를 이용해 데이터를 동적으로 렌더링 -->
 	            <div th:each="memo : ${memos}" class="memo-box-container" th:data-id="${memo.id}" >
 	                <div class="memo-content-container">
-	                	<div class="memo-content" onclick="redirectToViewPage(this)">
-		                    <h3 th:text="${memo.title}"></h3>
-		                    <h4 th:text="${memo.createdDate}"></h4>	                	
+	                	<div class="memo-content" >
+	                		<div class="memo-content-left" onclick="redirectToViewPage(this)">
+			                    <h3 th:text="${memo.title}"></h3>	   
+	                		</div>
+		                   <div class="memo-content-right">
+							   <button onclick="togglePriority(this)">
+								    <i class="fa-solid fa-star" th:classappend="${memo.priority > 0 ? 'priority-star' : ''}"></i>
+								</button>
+							    <h4 th:text="${memo.updatedDate != null ? memo.updatedDate : memo.createdDate}"></h4>
+							</div>
 	                	</div>
 	                	<div class="delete-overlay" onclick="deleteMemo(this)">
 	                		<i class="fas fa-trash-alt"></i>
@@ -77,9 +84,7 @@
 	            }
 	        } else {
 	            const memoContent = currentMemoBox.querySelector('.memo-content');
-	            if (memoContent) {
-	                redirectToViewPage(memoContent);
-	            }
+	            
 	        }
 
 	        currentMemoBox = null;
@@ -91,6 +96,8 @@
 	    memoBox.style.transform = 'translateX(0)';
 	    deleteOverlay.style.right = '-100px';
 	}
+	
+	/* memo box에 맞는 메모로 이동 */
 
 	function redirectToViewPage(element) {
 	    const memoId = element.closest('.memo-box-container').dataset.id;
@@ -100,6 +107,30 @@
 	document.addEventListener('touchmove', (e) => {
 	    e.preventDefault();
 	}, { passive: false });
+	
+	/* 우선순위 토글 */
+	function togglePriority(button) {
+	    const memoBox = button.closest('.memo-box-container');
+	    const memoId = memoBox.dataset.id;
+
+	    fetch(`/memos/${memoId}/priority`, {
+	        method: 'POST',
+	    })
+	    .then(response => {
+	        if (response.ok) {
+	            const starIcon = button.querySelector('i');
+	            starIcon.classList.toggle('priority-star');
+	            
+	            window.location.reload();
+	        } else {
+	            alert('Failed to update priority. Please try again.');
+	        }
+	    })
+	    .catch(error => {
+	        console.error('Error:', error);
+	        alert('An error occurred. Please try again.');
+	    });
+	}
 	</script>
 </body>
 </html>
