@@ -47,6 +47,10 @@ button {
 	border-radius: 20px;
 }
 
+.list-header-container .search-button i {
+	color: white;
+}
+
 /* Memo 바디 */
 .list-body-container {
     width: 100vw;
@@ -105,8 +109,8 @@ button {
 /*  Footer */
 .new-button {
     position: absolute;
-    bottom: 100px;
-    right: 100px;
+    bottom: 40px;
+    right: 20px;
     border-radius: 50%; 
     background-color: black;
     color: white; 

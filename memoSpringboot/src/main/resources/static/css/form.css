@@ -11,15 +11,13 @@ body {
 	background-color: rgb(37, 37, 37);
 	color: white; 
 	font-family: Pretendard-Regular;
-	padding: 40px 20px;
 }
-h1{
+h1, input{
 	font-size: 4rem;
-	font-weight: 700;
+	font-weight: 300;
 }
-h2 {
+h2, textarea {
 	font-size: 3.5rem;
-	font-weight: 100;
 }
 h3 {
 	font-size: 3rem;
@@ -35,29 +33,37 @@ button {
     height: 100px;
 	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.10);
 }
+input, textarea {
+	padding: 20px;
+	border-radius: 10px;
+	background-color: rgb(69,69,69);
+	color: white;
+}
 
+/* form-container */
+.form-container {
+	flex: 1;
+}
 /* 헤더 */
-.view-header-container {
+.form-header-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 20px;
 }
 
-.view-header-container  button{
-	border-radius: 15px;
-	background-color:  rgb(69,69,69);
+.form-header-container button {
+	background-color: rgb(69,69,69);
+	border-radius: 20px;
 }
-.view-header-container button i {
+.form-header-container button i {
 	color: white;
 }
 
 /* 바디 */
-.view-body-container {
-	flex: 1;
-}
-
-.view-body-header {
-	display: flex;
-	justify-content: space-between;
-	align-items : center;
+.form-body-container {
+	padding: 20px;
+	display: flex ;
+	flex-direction: column;
+	gap: 20px
 }
