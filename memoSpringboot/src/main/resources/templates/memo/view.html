@@ -14,9 +14,12 @@
 		</header>
 		
 		<div class="view-body-container">
-			<div class="view-body-header">
-			    <h1 th:text="${memo.title}"></h1>
-			</div>
+		    <div class="view-body-header">
+		        <h1 th:text="${memo.title}"></h1>
+		    </div>
+		    <div th:each="imageUrl : ${imageUrls}">
+		        <img th:src="${imageUrl}" alt="Memo Image" style="width: 100%; height: auto;">
+		    </div>
 		    <h2 th:text="${memo.content}"></h2>
 		</div>
 	</div>

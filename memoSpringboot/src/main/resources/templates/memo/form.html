@@ -14,12 +14,13 @@
     		<button class="confirm-button" onclick="saveMemo()"><i class="fa-solid fa-check"></i></button>
     	</div>
     	
-	    <form th:action="${memo.id == 0 ? '/memos/new' : '/memos/' + memo.id + '/edit'}" method="post">
-	        <div class="form-body-container">
-	            <input type="text" id="title" name="title" th:value="${memo.title}" required>
-	            <textarea id="content" name="content" rows="10" required th:text="${memo.content}"></textarea>
-	        </div>
-	    </form>
+	    <form th:action="${memo.id == 0 ? '/memos/new' : '/memos/' + memo.id + '/edit'}" method="post" enctype="multipart/form-data">
+		    <div class="form-body-container">
+		        <input type="text" id="title" name="title" th:value="${memo.title}" required>
+		        <input type="file" id="images" name="images"  multiple >
+		        <textarea id="content" name="content" rows="10" required th:text="${memo.content}"></textarea>
+		    </div>
+		</form>
     </div>
    	<script>
    		function goBackToHome() {

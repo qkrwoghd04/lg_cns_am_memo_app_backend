@@ -42,4 +42,18 @@ public class MemoService {
     public void deleteMemo(int id) {
         memoMapper.deleteMemo(id);
     }
+    
+    public void addImagesToMemo(int memoId, List<String> imageUrls) {
+        for (String imageUrl : imageUrls) {
+            memoMapper.insertImage(memoId, imageUrl);
+        }
+    }
+    
+    public List<String> getImagesByMemoId(int memoId) {
+        return memoMapper.selectImagesByMemoId(memoId);
+    }
+    
+    public void deleteImagesByMemoId(int memoId) {
+        memoMapper.deleteImagesByMemoId(memoId);
+    }
 }

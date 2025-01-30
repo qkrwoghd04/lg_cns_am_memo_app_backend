@@ -41,4 +41,18 @@
     <select id="getNextId" resultType="int">
         SELECT COALESCE(MAX(id), 0) + 1 FROM memos
     </select>
+    
+    <!-- 이미지 관련 쿼리 -->
+    <insert id="insertImage" parameterType="map" >
+    	INSERT INTO images (memo_id, image_url)
+    	VALUES (#{memoId}, #{imageUrl})
+    </insert>
+    
+    <select id="selectImagesByMemoId"  parameterType="int" resultType="string">
+    	SELECT image_url FROM images WHERE memo_id = #{memoId}
+    </select>
+    
+    <delete id="deleteImagesByMemoId" parameterType="int" >
+    	DELETE FROM images WHERE memo_id = #{memoId}
+    </delete>
 </mapper>
