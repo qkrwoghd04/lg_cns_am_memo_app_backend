@@ -2,9 +2,7 @@
 LG CNS AM CAMP에서 배운 Java Springboot 내용을 바탕으로 간단하게 메모 앱을 구현해봅니다. mybatis와 hikari를 통해 데이터를 관리합니다[Notion](https://boiling-capri-3b8.notion.site/build-mybatis-hikari-Springboot-185077591f228068901ffa078a84d332?pvs=4)
 
 # ERD (users, logos not started)
-<img width="300" alt="image" src="https://github.com/user-attachments/assets/4e5d0ed8-63cc-44fe-b03d-d0e0d1675582" />
-
-
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/37264b77-5075-46ec-b699-0364add5730b" />
 
 # Prototype with Figma
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/21494835-c1c7-4f00-a415-670e79e4c0ff" />
