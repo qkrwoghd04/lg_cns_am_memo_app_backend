@@ -1,4 +1,4 @@
-# 🧩 프로젝트 목적 (24/01/24 - In progress)
+# 🧩 프로젝트 목적 (24/01/24 - 24/01/30)
 LG CNS AM CAMP에서 배운 Java Springboot 내용을 바탕으로 간단하게 메모 앱을 구현해봅니다. mybatis와 hikari를 통해 데이터를 관리합니다[Notion](https://boiling-capri-3b8.notion.site/build-mybatis-hikari-Springboot-185077591f228068901ffa078a84d332?pvs=4)
 
 # ERD (users, logos not started)
@@ -11,9 +11,9 @@ LG CNS AM CAMP에서 배운 Java Springboot 내용을 바탕으로 간단하게 
 
 # UI (in progress)
 <img width="155" alt="image" src="https://github.com/user-attachments/assets/80acb9e8-9192-4240-861f-5d572351240b" />
-<img width="155" alt="image" src="https://github.com/user-attachments/assets/0a5fd3c2-9789-4679-9c1b-38308cb953bf" />
-<img width="155" alt="image" src="https://github.com/user-attachments/assets/9922aaa8-180e-462d-945d-3c08bfa5ed73" />
-<img width="155" alt="image" src="https://github.com/user-attachments/assets/cc4a8e0e-50a7-4d12-b99e-f240b2dc6ff9" />
+<img width="155" alt="image" src="https://github.com/user-attachments/assets/4d1eb55a-6e28-49a0-b84f-126e0106b2ea" />
+<img width="155" alt="image" src="https://github.com/user-attachments/assets/67ffb16b-4f88-4856-ae68-9414f5ceae1f" />
+<img width="155" alt="image" src="https://github.com/user-attachments/assets/908166eb-42dc-4396-8bd4-9a85017253fc" />
 <img width="155" alt="image" src="https://github.com/user-attachments/assets/9873a9a4-4c39-4f65-a484-6fc6c0fb9d73" />
 
 ---
